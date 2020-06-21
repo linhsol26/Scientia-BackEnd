@@ -1,12 +1,12 @@
-const app = require('express')();
-const URL = "https://scientia-9d421.firebaseio.com";
-const key = require("./key.json");
-const admin = require("./database");
-const apiHelper = new (require('ambrosentk-api-helper').create)();
+const app = require('express')(); 
+const URL = "https://scientia-9d421.firebaseio.com"; 
+const key = require("./key.json"); 
+const admin = require("./database"); 
+const apiHelper = new (require('ambrosentk-api-helper').create)(); 
 const db = new admin(key, URL);
-const port = 3000;
-app.use(require('cors')());
-app.use(require('body-parser')());
+const port = 3000; 
+app.use(require('cors')()); 
+app.use(require('body-parser')()); 
 
     // test port
     app.listen(port, () => {

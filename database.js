@@ -1,5 +1,6 @@
 const firebase = require("firebase-admin"); 
-const Database = function (credentials, databaseURL) { 
+const Database = function (credentials, databaseURL) {
+     
     this.app = firebase.initializeApp({ credential: firebase.credential.cert(credentials), databaseURL: databaseURL }); 
     this.db = this.app.firestore(); 
     this.auth = this.app.auth(); 
@@ -9,8 +10,8 @@ const Database = function (credentials, databaseURL) {
             this.db.collection('courses').get().then((snapshot) => {
                 resolve(snapshot.docs.map((doc) => { 
                     return { 
-                        id: doc.id,
-                        ...doc.data()
+                        id: doc.id, 
+                        ...doc.data() 
                     } 
                 })); 
             }) 
@@ -31,7 +32,7 @@ const Database = function (credentials, databaseURL) {
                 } 
                 resovle("Permission denied"); 
             }) 
-        })
+        });
     }
 
     Database.prototype.deleteCourse = function (uid, docId) { 
@@ -41,10 +42,10 @@ const Database = function (credentials, databaseURL) {
                 if (chosenCourse.ownerId === uid) { 
                     this.db.collection('/courses').doc(docId).delete(); 
                     resolve("Delete successfully");  
-                }
+                } 
                 resolve("Permission denied"); 
             });
         });
-    }
-}
+    } 
+} 
 module.exports = Database; 
