@@ -39,13 +39,14 @@ app.use(require('body-parser')());
             res.send({ status: "Created fail!" });
     });
 
-    app.post("courses/updateCourse", async (req, res) => {
+    app.post("/courses/updateCourse", async (req, res) => {
         let uid = req.body.uid;
         let docId = req.body.key;
         let result = await apiHelper.validate(req.body, [
             { link: "uid" },
             { link: "key" },
             { link: "title" },
+            { link: "desc" },
             { link: "content" }
         ]);
         if (result.status) {

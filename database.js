@@ -27,7 +27,11 @@ const Database = function (credentials, databaseURL) {
             this.db.collection('/courses').doc(docId).get().then((data) => { 
                 let chosenCourse = data.data(); 
                 if (chosenCourse.ownerId === uid) { 
-                    this.db.collection('/courses').doc(docId).update(course); 
+                    this.db.collection('/courses').doc(docId).update({
+                        title: course.title,
+                        desc: course.desc,
+                        content: course.content
+                    }); 
                     resovle("Update successfully"); 
                 } 
                 resovle("Permission denied"); 
