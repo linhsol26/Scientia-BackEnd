@@ -36,8 +36,8 @@ const Database = function (credentials, databaseURL) {
                 } 
                 resovle("Permission denied"); 
             }) 
-        });
-    }
+        }); 
+    } 
 
     Database.prototype.deleteCourse = function (uid, docId) { 
         return new Promise((resolve, reject) => { 
@@ -48,8 +48,8 @@ const Database = function (credentials, databaseURL) {
                     resolve("Delete successfully");  
                 } 
                 resolve("Permission denied"); 
-            });
-        });
+            }); 
+        }); 
     } 
 } 
 module.exports = Database; 
