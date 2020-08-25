@@ -12,7 +12,11 @@ app.use(require('body-parser')());
     app.listen(port, () => {
         console.log(`Scientia is listening on port ${port}`);
     });
- 
+    // ping
+    app.get('/ping', async (req, res) => {
+        res.send({'message': 'Hello World'});
+    })
+
     app.get("courses/getCourse", async (req, res) => {
         if(result.status){
         let status = await db.getAll();
