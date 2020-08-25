@@ -17,6 +17,10 @@ app.use(require('body-parser')());
         res.send({'message': 'Hello World'});
     })
 
+    app.get('/sayHello:name', async (req, res) => {
+        res.send({'message': 'Hello ' + req.params.name});
+    })
+
     app.get("courses/getCourse", async (req, res) => {
         if(result.status){
         let status = await db.getAll();
